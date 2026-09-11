@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Código que Vende — Aprenda HTML, CSS e JavaScript na prática e crie sites profissionais do zero, sem depender de IA. Acesso imediato e vitalício por R$ 27,90.">
+<meta name="theme-color" content="#0a0e1a">
+<meta property="og:title" content="Código que Vende — Crie Sites Profissionais do Zero">
+<meta property="og:description" content="Aprenda HTML, CSS e JavaScript na prática. Acesso imediato e vitalício.">
+<meta property="og:type" content="website">
+<title>Código que Vende — Crie Sites Profissionais do Zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CÓDIGO QUE VENDE — Landing Page Premium
+   ============================================================ */
+:root{
+  --bg:#0a0e1a;
+  --bg-2:#0d1220;
+  --card:#11182b;
+  --card-2:#151d33;
+  --border:rgba(120,160,255,.14);
+  --border-glow:rgba(99,102,241,.45);
+  --text:#e8ecf6;
+  --muted:#9aa5bf;
+  --accent:#6366f1;
+  --accent-2:#22d3ee;
+  --accent-3:#a78bfa;
+  --green:#34d399;
+  --radius:18px;
+  --font-title:'Sora',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--accent);color:#fff}
+img{max-width:100%;display:block}
+
+/* ---------- Fondo con malla sutil ---------- */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background:
+    radial-gradient(900px 500px at 85% -5%, rgba(99,102,241,.14), transparent 60%),
+    radial-gradient(800px 500px at -10% 30%, rgba(34,211,238,.08), transparent 60%),
+    radial-gradient(700px 600px at 50% 110%, rgba(167,139,250,.10), transparent 60%);
+  pointer-events:none;z-index:0;
+}
+.grid-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(120,160,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(120,160,255,.035) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black 40%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 30%,black 40%,transparent 100%);
+}
+main{position:relative;z-index:1}
+
+/* ---------- Contenedor ---------- */
+.container{width:min(1120px,92%);margin:0 auto}
+
+/* ---------- Header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .35s ease,border-color .35s ease,backdrop-filter .35s ease;
+  border-bottom:1px solid transparent;
+}
+header.scrolled{
+  background:rgba(10,14,26,.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-title);font-weight:800;font-size:1.05rem;
+  color:var(--text);text-decoration:none;letter-spacing:-.02em;
+}
+.logo .logo-mark{
+  width:34px;height:34px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:.9rem;font-weight:700;color:#fff;
+  box-shadow:0 0 20px rgba(99,102,241,.45);
+}
+.logo span{color:var(--accent-2)}
+.nav-cta{
+  font-family:var(--font-title);font-weight:700;font-size:.82rem;
+  color:var(--text);text-decoration:none;
+  padding:10px 22px;border-radius:999px;
+  border:1px solid var(--border-glow);
+  background:rgba(99,102,241,.12);
+  transition:all .25s ease;
+}
+.nav-cta:hover{background:rgba(99,102,241,.28);box-shadow:0 0 24px rgba(99,102,241,.35);transform:translateY(-2px)}
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--font-title);font-weight:700;
+  font-size:1rem;color:#fff;text-decoration:none;
+  padding:18px 38px;border-radius:14px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--accent),#4f46e5);
+  box-shadow:0 8px 30px rgba(99,102,241,.35);
+  transition:transform .2s ease,box-shadow .25s ease,filter .25s ease;
+  position:relative;overflow:hidden;
+}
+.btn::after{
+  content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:skewX(-20deg);transition:left .55s ease;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(99,102,241,.5);filter:brightness(1.08)}
+.btn:hover::after{left:130%}
+.btn:active{transform:translateY(-1px) scale(.98)}
+.btn-big{font-size:1.12rem;padding:22px 52px;border-radius:16px}
+.btn-blk{width:100%}
+
+/* ---------- Tags / selos ---------- */
+.tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:.74rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent-2);
+  padding:9px 18px;border-radius:999px;
+  border:1px solid rgba(34,211,238,.3);
+  background:rgba(34,211,238,.07);
+  box-shadow:0 0 24px rgba(34,211,238,.12) inset;
+}
+
+/* ---------- Hero ---------- */
+.hero{padding:160px 0 90px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{
+  font-family:var(--font-title);font-weight:800;
+  font-size:clamp(2.1rem,4.6vw,3.4rem);
+  line-height:1.12;letter-spacing:-.03em;margin:26px 0 20px;
+}
+.hero h1 .grad{
+  background:linear-gradient(120deg,var(--accent-2),var(--accent-3),var(--accent));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p.sub{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:30px}
+.hero-flags{
+  display:flex;gap:14px;flex-wrap:wrap;margin-bottom:32px;
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.1em;
+}
+.hero-flags span{color:var(--green)}
+.hero-trust{
+  margin-top:18px;font-size:.82rem;color:var(--muted);
+  display:flex;align-items:center;gap:8px;
+}
+.hero-trust svg{flex:none}
+
+/* --- Mock editor de código --- */
+.editor{
+  background:linear-gradient(160deg,#0e1526,#0b1020);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(99,102,241,.12);
+  overflow:hidden;
+  transform:perspective(1200px) rotateY(-6deg) rotateX(2deg);
+  transition:transform .5s ease;
+}
+.editor:hover{transform:perspective(1200px) rotateY(-2deg) rotateX(0deg)}
+.editor-bar{
+  display:flex;align-items:center;gap:8px;
+  padding:14px 16px;border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,.02);
+}
+.dot{width:11px;height:11px;border-radius:50%}
+.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
+.editor-title{
+  margin-left:10px;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);
+}
+.editor-body{padding:22px 20px;font-family:var(--font-mono);font-size:.82rem;line-height:1.9;min-height:330px;white-space:pre-wrap}
+.tk-tag{color:#7dd3fc}.tk-attr{color:#f0abfc}.tk-val{color:#86efac}
+.tk-txt{color:#c7d2ea}.tk-sel{color:#f0abfc}.tk-prop{color:#93c5fd}.tk-cur{display:inline-block;width:8px;height:16px;background:var(--accent-2);vertical-align:middle;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.editor-float{
+  position:absolute;bottom:-22px;left:-24px;
+  background:var(--card-2);border:1px solid var(--border);
+  border-radius:14px;padding:14px 20px;
+  font-family:var(--font-mono);font-size:.75rem;color:var(--green);
+  box-shadow:0 16px 40px rgba(0,0,0,.45);
+  display:flex;align-items:center;gap:10px;
+}
+.hero-visual{position:relative}
+
+/* ---------- Seções genéricas ---------- */
+section{padding:96px 0;position:relative}
+.sec-tag{text-align:center;margin-bottom:16px}
+.sec-title{
+  font-family:var(--font-title);font-weight:800;
+  font-size:clamp(1.7rem,3.4vw,2.5rem);
+  line-height:1.2;letter-spacing:-.025em;
+  text-align:center;max-width:760px;margin:0 auto 18px;
+}
+.sec-sub{
+  text-align:center;color:var(--muted);max-width:620px;margin:0 auto 54px;font-size:1.03rem;
+}
+.divider{
+  width:1px;height:80px;margin:0 auto;
+  background:linear-gradient(to bottom,transparent,var(--border-glow),transparent);
+}
+
+/* ---------- Problema ---------- */
+.problem{background:linear-gradient(180deg,transparent,rgba(99,102,241,.05),transparent)}
+.problem-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:38px;
+  max-width:860px;margin:0 auto;
+}
+.problem-card p{color:var(--muted);margin-bottom:14px}
+.problem-card p strong{color:var(--text)}
+.pain-list{list-style:none;margin:30px 0;display:grid;gap:14px}
+.pain-list li{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.025);border:1px solid var(--border);
+  border-radius:12px;padding:16px 20px;font-weight:500;
+  transition:border-color .25s ease,transform .25s ease;
+}
+.pain-list li:hover{border-color:rgba(248,113,113,.4);transform:translateX(6px)}
+.pain-x{
+  flex:none;width:26px;height:26px;border-radius:8px;
+  background:rgba(248,113,113,.12);color:#f87171;
+  display:grid;place-items:center;font-weight:700;font-size:.85rem;
+}
+.solution{
+  margin-top:30px;text-align:center;
+  font-family:var(--font-title);font-weight:700;font-size:1.15rem;
+  background:linear-gradient(120deg,var(--green),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+/* ---------- Cards de módulos ---------- */
+.modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.module-card{
+  background:linear-gradient(165deg,var(--card),var(--card-2));
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:28px 24px;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+  position:relative;overflow:hidden;
+}
+.module-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent-2),transparent);
+  opacity:0;transition:opacity .3s ease;
+}
+.module-card:hover{transform:translateY(-8px);border-color:var(--border-glow);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.module-card:hover::before{opacity:1}
+.module-icon{
+  width:48px;height:48px;border-radius:13px;margin-bottom:18px;
+  display:grid;place-items:center;
+  background:rgba(99,102,241,.13);border:1px solid rgba(99,102,241,.3);
+  color:var(--accent-2);
+}
+.module-card h3{font-family:var(--font-title);font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.module-card p{font-size:.88rem;color:var(--muted)}
+.module-code{
+  margin-top:16px;font-family:var(--font-mono);font-size:.7rem;color:#56617e;
+  transition:color .3s ease;
+}
+.module-card:hover .module-code{color:var(--accent-2)}
+
+/* ---------- Projetos ---------- */
+.projects{background:linear-gradient(180deg,transparent,rgba(34,211,238,.04),transparent)}
+.projects-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.project-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:26px 20px;text-align:center;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.project-card:hover{transform:translateY(-8px) scale(1.02);border-color:var(--border-glow);box-shadow:0 18px 46px rgba(0,0,0,.45)}
+.project-icon{
+  width:56px;height:56px;margin:0 auto 16px;border-radius:16px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(34,211,238,.12));
+  border:1px solid var(--border-glow);color:var(--accent-2);
+}
+.project-card h4{font-family:var(--font-title);font-size:.95rem;font-weight:700;margin-bottom:8px}
+.project-card p{font-size:.8rem;color:var(--muted)}
+
+/* ---------- Para quem é ---------- */
+.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:820px;margin:0 auto}
+.who-item{
+  display:flex;align-items:center;gap:14px;
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:18px 22px;font-weight:500;
+  transition:border-color .25s ease,background .25s ease;
+}
+.who-item:hover{border-color:rgba(52,211,153,.4);background:var(--card-2)}
+.who-check{
+  flex:none;width:26px;height:26px;border-radius:50%;
+  background:rgba(52,211,153,.13);color:var(--green);
+  display:grid;place-items:center;font-weight:800;font-size:.8rem;
+}
+.who-note{
+  text-align:center;margin-top:36px;
+  font-family:var(--font-title);font-weight:700;color:var(--accent-2);font-size:1.1rem;
+}
+
+/* ---------- Bônus ---------- */
+.bonuses{background:linear-gradient(180deg,transparent,rgba(167,139,250,.05),transparent)}
+.bonus-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:900px;margin:0 auto}
+.bonus-card{
+  background:linear-gradient(160deg,var(--card-2),var(--card));
+  border:1px solid rgba(167,139,250,.25);border-radius:var(--radius);
+  padding:30px;position:relative;overflow:hidden;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.bonus-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.45);border-color:rgba(167,139,250,.5)}
+.bonus-card::after{
+  content:"🎁";position:absolute;top:-14px;right:-10px;font-size:5.4rem;opacity:.06;pointer-events:none;
+}
+.bonus-num{
+  font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  color:var(--accent-3);margin-bottom:10px;display:block;
+}
+.bonus-card h4{font-family:var(--font-title);font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.bonus-card p{font-size:.9rem;color:var(--muted)}
+
+/* ---------- Oferta ---------- */
+.offer-card{
+  max-width:640px;margin:0 auto;text-align:center;
+  background:linear-gradient(170deg,#141b31,#0e1425);
+  border:1px solid var(--border-glow);border-radius:26px;
+  padding:56px 44px;position:relative;overflow:hidden;
+  box-shadow:0 0 90px rgba(99,102,241,.18),0 30px 70px rgba(0,0,0,.5);
+}
+.offer-card::before{
+  content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);
+  width:70%;height:60%;border-radius:50%;
+  background:radial-gradient(circle,rgba(99,102,241,.22),transparent 70%);
+  pointer-events:none;
+}
+.offer-price-old{
+  font-size:1.15rem;color:#69748f;text-decoration:line-through;margin-top:26px;
+}
+.offer-price{
+  font-family:var(--font-title);font-weight:800;
+  font-size:clamp(3.2rem,8vw,4.6rem);letter-spacing:-.04em;
+  background:linear-gradient(120deg,var(--accent-2),var(--green));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1.1;margin-bottom:6px;
+}
+.offer-price-cents{font-size:1rem;-webkit-text-fill-color:var(--muted)}
+.offer-flags{
+  font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.14em;
+  color:var(--green);margin:10px 0 30px;
+}
+.offer-list{
+  list-style:none;text-align:left;max-width:340px;margin:0 auto 36px;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.offer-list li{display:flex;align-items:center;gap:9px;font-size:.9rem;color:var(--muted)}
+.offer-list .who-check{width:20px;height:20px;font-size:.7rem}
+
+/* ---------- Garantia ---------- */
+.guarantee{
+  max-width:820px;margin:0 auto;
+  display:flex;align-items:center;gap:34px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:40px;
+}
+.guarantee-icon{
+  flex:none;width:88px;height:88px;border-radius:24px;
+  background:linear-gradient(135deg,rgba(52,211,153,.16),rgba(34,211,238,.1));
+  border:1px solid rgba(52,211,153,.35);
+  display:grid;place-items:center;font-size:2.4rem;
+}
+.guarantee h3{font-family:var(--font-title);font-size:1.3rem;font-weight:800;margin-bottom:10px}
+.guarantee p{color:var(--muted);font-size:.95rem}
+.guarantee-days{
+  margin-top:14px;display:inline-block;
+  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;
+  color:var(--green);border:1px dashed rgba(52,211,153,.4);
+  border-radius:10px;padding:8px 16px;
+}
+
+/* ---------- FAQ ---------- */
+.faq-list{max-width:760px;margin:0 auto;display:grid;gap:12px}
+.faq-item{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;transition:border-color .3s ease;
+}
+.faq-item.open{border-color:var(--border-glow)}
+.faq-q{
+  width:100%;background:none;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:20px 24px;text-align:left;
+  font-family:var(--font-title);font-weight:600;font-size:.98rem;color:var(--text);
+}
+.faq-q .chev{
+  flex:none;width:28px;height:28px;border-radius:8px;
+  background:rgba(99,102,241,.12);color:var(--accent-2);
+  display:grid;place-items:center;
+  transition:transform .35s ease;
+}
+.faq-item.open .chev{transform:rotate(180deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease;
+}
+.faq-a p{padding:0 24px 22px;color:var(--muted);font-size:.92rem}
+
+/* ---------- CTA Final ---------- */
+.final{
+  text-align:center;
+  background:linear-gradient(180deg,transparent,rgba(99,102,241,.09),transparent);
+}
+.final .sec-title{max-width:680px}
+.final-price{
+  font-family:var(--font-title);font-weight:800;font-size:clamp(2.6rem,6vw,3.6rem);
+  background:linear-gradient(120deg,var(--accent-2),var(--green));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin:30px 0 28px;letter-spacing:-.03em;
+}
+.final-trust{margin-top:18px;font-size:.82rem;color:var(--muted)}
+
+/* ---------- Rodapé ---------- */
+footer{
+  border-top:1px solid var(--border);
+  padding:56px 0 36px;background:var(--bg-2);
+  position:relative;z-index:1;
+}
+.footer-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+.footer-brand p{color:var(--muted);font-size:.88rem;margin-top:10px;font-style:italic}
+.footer-links{display:flex;gap:26px;flex-wrap:wrap}
+.footer-links a{
+  color:var(--muted);text-decoration:none;font-size:.85rem;
+  transition:color .25s ease;
+}
+.footer-links a:hover{color:var(--accent-2)}
+.copyright{
+  margin-top:40px;padding-top:24px;border-top:1px solid var(--border);
+  text-align:center;font-size:.78rem;color:#5b6684;
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:60px}
+  .hero{padding-top:130px;text-align:center}
+  .hero p.sub{margin-left:auto;margin-right:auto}
+  .hero-flags,.hero-trust{justify-content:center}
+  .editor{transform:none}
+  .modules-grid{grid-template-columns:repeat(2,1fr)}
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .guarantee{flex-direction:column;text-align:center}
+}
+@media (max-width:640px){
+  section{padding:70px 0}
+  .modules-grid,.projects-grid,.who-grid,.bonus-grid{grid-template-columns:1fr}
+  .offer-list{grid-template-columns:1fr}
+  .offer-card{padding:44px 26px}
+  .editor-float{left:0;bottom:-18px;padding:10px 14px;font-size:.68rem}
+  .nav-cta{padding:8px 16px;font-size:.75rem}
+  .btn-big{width:100%;padding:20px 24px;font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="container nav">
+    <a href="#top" class="logo">
+      <span class="logo-mark">&lt;/&gt;</span>
+      Código<span>queVende</span>
+    </a>
+    <a href="#oferta" class="nav-cta">Começar agora</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">🚀 Aprenda a criar sites do zero</span>
+      <h1>Crie Sites Profissionais do Zero — <span class="grad">Sem Depender de IA</span></h1>
+      <p class="sub">Aprenda HTML, CSS e JavaScript na prática e descubra como transformar suas ideias em sites reais, profissionais e responsivos.</p>
+      <div class="hero-flags">
+        <span>ACESSO IMEDIATO</span><span>•</span><span>ACESSO VITALÍCIO</span>
+      </div>
+      <a href="#oferta" class="btn btn-big">QUERO APRENDER A CRIAR SITES</a>
+      <div class="hero-trust">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Pagamento seguro • Acesso imediato • Conteúdo para iniciantes
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="editor" aria-hidden="true">
+        <div class="editor-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="editor-title">meu-primeiro-site.html</span>
+        </div>
+        <div class="editor-body"><span class="tk-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tk-tag">&lt;html</span> <span class="tk-attr">lang</span>=<span class="tk-val">"pt-BR"</span><span class="tk-tag">&gt;</span>
+  <span class="tk-tag">&lt;head&gt;</span>
+    <span class="tk-tag">&lt;title&gt;</span><span class="tk-txt">Meu Site</span><span class="tk-tag">&lt;/title&gt;</span>
+    <span class="tk-tag">&lt;style&gt;</span>
+      <span class="tk-sel">.container</span> {
+        <span class="tk-prop">display</span>: <span class="tk-val">flex</span>;
+        <span class="tk-prop">gap</span>: <span class="tk-val">2rem</span>;
+      }
+    <span class="tk-tag">&lt;/style&gt;</span>
+  <span class="tk-tag">&lt;/head&gt;</span>
+  <span class="tk-tag">&lt;body&gt;</span>
+    <span class="tk-tag">&lt;h1&gt;</span><span class="tk-txt">Olá, mundo!</span><span class="tk-tag">&lt;/h1&gt;</span>
+  <span class="tk-tag">&lt;/body&gt;</span>
+<span class="tk-tag">&lt;/html&gt;</span><span class="tk-cur"></span></div>
+      </div>
+      <div class="editor-float">✓ site_publicado — deploy bem-sucedido</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<!-- ================= PROBLEMA ================= -->
+<section class="problem" id="problema">
+  <div class="container">
+    <p class="sec-tag"><span class="tag">O problema</span></p>
+    <h2 class="sec-title reveal">Você realmente quer criar sites ou apenas depender de ferramentas que fazem tudo por você?</h2>
+    <div class="problem-card reveal">
+      <p>Muitas pessoas querem entrar no mercado de criação de sites, mas acabam <strong>dependendo completamente de ferramentas prontas</strong>.</p>
+      <p>Quando você aprende os fundamentos do código, passa a <strong>entender como um site realmente funciona</strong> e consegue construir, modificar e personalizar seus próprios projetos.</p>
+      <ul class="pain-list">
+        <li><span class="pain-x">✕</span> Não sabe por onde começar</li>
+        <li><span class="pain-x">✕</span> Depende de ferramentas prontas</li>
+        <li><span class="pain-x">✕</span> Não consegue personalizar seus projetos</li>
+      </ul>
+      <p class="solution">Com o Código que Vende, você aprende a construir seus próprios sites.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= O QUE VAI APRENDER ================= -->
+<section id="conteudo">
+  <div class="container">
+    <p class="sec-tag"><span class="tag">Conteúdo completo</span></p>
+    <h2 class="sec-title reveal">Tudo o que você precisa para começar a criar sites</h2>
+    <p class="sec-sub reveal">Fundamentos sólidos + prática real. Sem enrolação, sem depender de ninguém.</p>
+    <div class="modules-grid">
+      <div class="module-card reveal">
+        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h3>HTML</h3>
+        <p>Aprenda a estruturar páginas da maneira correta.</p>
+        <div class="module-code">&lt;estrutura&gt;</div>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+        <h3>CSS</h3>
+        <p>Aprenda a criar layouts modernos, bonitos e profissionais.</p>
+        <div class="module-code">.layout { display: flex }</div>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>JavaScript</h3>
+        <p>Entenda como adicionar interatividade aos seus sites.</p>
+        <div class="module-code">addEventListener()</div>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <h3>Responsividade</h3>
+        <p>Aprenda a criar sites que funcionam perfeitamente no celular, tablet e computador.</p>
+        <div class="module-code">@media (max-width)</div>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5zM2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <h3>Design</h3>
+        <p>Aprenda princípios básicos para criar páginas visualmente profissionais.</p>
+        <div class="module-code">color: #6366f1</div>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+        <h3>Publicação</h3>
+        <p>Descubra como colocar seus sites no ar e disponibilizá-los para outras pessoas.</p>
+        <div class="module-code">git push → live</div>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <h3>Domínio</h3>
+        <p>Entenda como utilizar um domínio profissional.</p>
+        <div class="module-code">www.seusite.com</div>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <h3>Freelancing</h3>
+        <p>Aprenda como transformar a habilidade de criar sites em uma oportunidade de trabalho.</p>
+        <div class="module-code">cliente.pagar(you)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJETOS ================= -->
+<section class="projects" id="projetos">
+  <div class="container">
+    <p class="sec-tag"><span class="tag">Aprendizado prático</span></p>
+    <h2 class="sec-title reveal">Você não vai ficar apenas assistindo aulas.<br>Vai colocar a mão no código.</h2>
+    <p class="sec-sub reveal">Durante o aprendizado, você poderá construir projetos práticos para desenvolver suas habilidades e começar a montar seu próprio portfólio.</p>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h4>Landing Page</h4>
+        <p>Páginas de captura modernas e otimizadas para conversão.</p>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg></div>
+        <h4>Site para Restaurante</h4>
+        <p>Cardápio digital, reservas e presença online profissional.</p>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+        <h4>Site para Empresa</h4>
+        <p>Páginas institucionais que passam credibilidade ao negócio.</p>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <h4>Portfólio Profissional</h4>
+        <p>Mostre seus projetos e suas habilidades de forma elegante.</p>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h4>Página de Vendas</h4>
+        <p>Estruture ofertas persuasivas com design profissional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARA QUEM É ================= -->
+<section id="para-quem">
+  <div class="container">
+    <p class="sec-tag"><span class="tag">Este é para você</span></p>
+    <h2 class="sec-title reveal">O Código que Vende foi criado para você que...</h2>
+    <div class="who-grid reveal">
+      <div class="who-item"><span class="who-check">✓</span> Nunca programou</div>
+      <div class="who-item"><span class="who-check">✓</span> Quer aprender a criar sites</div>
+      <div class="who-item"><span class="who-check">✓</span> Quer começar no desenvolvimento web</div>
+      <div class="who-item"><span class="who-check">✓</span> Quer criar sites para clientes</div>
+      <div class="who-item"><span class="who-check">✓</span> Quer montar um portfólio</div>
+      <div class="who-item"><span class="who-check">✓</span> Quer desenvolver uma nova habilidade digital</div>
+      <div class="who-item"><span class="who-check">✓</span> Quer entender como sites funcionam</div>
+    </div>
+    <p class="who-note reveal">Não precisa ser especialista em programação para começar.</p>
+  </div>
+</section>
+
+<!-- ================= BÔNUS ================= -->
+<section class="bonuses" id="bonus">
+  <div class="container">
+    <p class="sec-tag"><span class="tag">Exclusivo</span></p>
+    <h2 class="sec-title reveal">E ainda existem bônus esperando por você</h2>
+    <div class="bonus-grid">
+      <div class="bonus-card reveal">
+        <span class="bonus-num">🎁 BÔNUS #1</span>
+        <h4>Templates Profissionais</h4>
+        <p>Modelos para acelerar a criação dos seus primeiros projetos.</p>
+      </div>
+      <div class="bonus-card reveal">
+        <span class="bonus-num">🎁 BÔNUS #2</span>
+        <h4>Checklist de Criação de Sites</h4>
+        <p>Um passo a passo para não esquecer os elementos importantes de um projeto.</p>
+      </div>
+      <div class="bonus-card reveal">
+        <span class="bonus-num">🎁 BÔNUS #3</span>
+        <h4>Guia para Conseguir Clientes</h4>
+        <p>Estratégias e ideias para começar a procurar seus primeiros clientes.</p>
+      </div>
+      <div class="bonus-card reveal">
+        <span class="bonus-num">🎁 BÔNUS #4</span>
+        <h4>Estrutura de Portfólio</h4>
+        <p>Aprenda como organizar seus projetos para apresentar seu trabalho profissionalmente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFERTA ================= -->
+<section id="oferta">
+  <div class="container">
+    <div class="offer-card reveal">
+      <p class="sec-tag"><span class="tag">🔥 Oferta especial</span></p>
+      <h2 class="sec-title" style="margin-bottom:0">Comece a aprender hoje</h2>
+      <p class="offer-price-old">de R$ 97,00 por apenas</p>
+      <div class="offer-price">R$ 27<span class="offer-price-cents">,90</span></div>
+      <p class="offer-flags">ACESSO IMEDIATO + ACESSO VITALÍCIO</p>
+      <ul class="offer-list">
+        <li><span class="who-check">✓</span> Conteúdo completo</li>
+        <li><span class="who-check">✓</span> Projetos práticos</li>
+        <li><span class="who-check">✓</span> Materiais complementares</li>
+        <li><span class="who-check">✓</span> Bônus exclusivos</li>
+        <li><span class="who-check">✓</span> Acesso imediato</li>
+        <li><span class="who-check">✓</span> Acesso vitalício</li>
+      </ul>
+      <a href="#" class="btn btn-big btn-blk js-checkout" target="_blank" rel="noopener">QUERO ACESSAR AGORA →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GARANTIA ================= -->
+<section id="garantia">
+  <div class="container">
+    <div class="guarantee reveal">
+      <div class="guarantee-icon">🛡️</div>
+      <div>
+        <h3>COMPRA SEGURA</h3>
+        <p>O pagamento é realizado de forma 100% segura através da plataforma de checkout. Seus dados são processados com criptografia e você recebe o acesso automaticamente após a confirmação.</p>
+        <!-- ==========================================================
+             GARANTIA: configure o período no seu checkout e edite abaixo
+             Exemplo: "Garantia incondicional de 7 dias"
+             Se não houver garantia configurada, remova este bloco.
+             ========================================================== -->
+        <span class="guarantee-days" id="guaranteePeriod">Garantia incondicional de 7 dias</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="container">
+    <p class="sec-tag"><span class="tag">Dúvidas frequentes</span></p>
+    <h2 class="sec-title reveal">Perguntas e respostas</h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Preciso saber programação para começar? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Não. O conteúdo é apresentado pensando principalmente em iniciantes, com explicações claras desde o absoluto zero.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Preciso ter experiência com HTML? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Não. O objetivo é começar desde os fundamentos, passo a passo, sem pressa e sem pré-requisitos.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Vou aprender a criar sites para celular? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sim. O conteúdo inclui ensinamentos sobre responsividade, para que seus sites funcionem bem no celular, tablet e computador.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">O acesso é imediato? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sim. Após a confirmação do pagamento, o acesso é disponibilizado automaticamente pela plataforma utilizada.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">O acesso é vitalício? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sim. Você paga uma única vez e acessa o conteúdo para sempre, incluindo futuras atualizações do material.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Posso criar sites para clientes depois de aprender? <span class="chev">▾</span></button>
+        <div class="faq-a"><p>Sim. O conhecimento adquirido pode ser utilizado para desenvolver projetos próprios e trabalhos para clientes.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="final" id="cta-final">
+  <div class="container">
+    <h2 class="sec-title reveal">Pare de apenas imaginar seu primeiro site.<br><span style="background:linear-gradient(120deg,var(--accent-2),var(--accent-3));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Comece a construir.</span></h2>
+    <p class="sec-sub reveal" style="margin-bottom:0"><strong style="color:var(--text)">Aprenda os fundamentos, pratique criando projetos reais e desenvolva a habilidade de criar seus próprios sites.</strong></p>
+    <div class="final-price reveal">R$ 27,90</div>
+    <a href="#" class="btn btn-big js-checkout reveal" target="_blank" rel="noopener">QUERO COMEÇAR AGORA →</a>
+    <p class="final-trust reveal">Acesso imediato • Acesso vitalício • Compra segura</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= RODAPÉ ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <span class="logo-mark">&lt;/&gt;</span>
+          Código<span>queVende</span>
+        </a>
+        <p>Aprenda a criar. Aprenda a construir. Aprenda a vender.</p>
+      </div>
+      <nav class="footer-links" aria-label="Links do rodapé">
+        <a href="#">Termos de uso</a>
+        <a href="#">Política de privacidade</a>
+        <a href="#">Suporte</a>
+      </nav>
+    </div>
+    <p class="copyright">© <span id="year"></span> Código que Vende. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO — edite apenas esta seção
+   ============================================================ */
+const CHECKOUT_URL = "https://SEU-CHECKOUT-AQUI.com"; // ← Cole aqui o link do seu checkout
+const GUARANTEE_DAYS = 7; // ← Ajuste conforme a garantia configurada no checkout
+
+/* ============================================================
+   LÓGICA DA PÁGINA
+   ============================================================ */
+(function(){
+  'use strict';
+
+  /* Aplica o link do checkout em todos os botões */
+  document.querySelectorAll('.js-checkout').forEach(function(btn){
+    btn.href = CHECKOUT_URL;
+    if(!CHECKOUT_URL || CHECKOUT_URL.indexOf('SEU-CHECKOUT') !== -1){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        alert('⚙️ Configuração pendente: defina o CHECKOUT_URL no topo do script.');
+      });
+    }
+  });
+
+  /* Período de garantia editável */
+  var g = document.getElementById('guaranteePeriod');
+  if(g && GUARANTEE_DAYS > 0){
+    g.textContent = 'Garantia incondicional de ' + GUARANTEE_DAYS + (GUARANTEE_DAYS === 1 ? ' dia' : ' dias');
+  } else if(g){
+    g.style.display = 'none';
+  }
+
+  /* Header com fundo ao rolar */
+  var header = document.getElementById('header');
+  function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 24); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* Ano automático no rodapé */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      /* Fecha os demais */
+      document.querySelectorAll('.faq-item.open').forEach(function(other){
+        if(other !== item){
+          other.classList.remove('open');
+          other.querySelector('.faq-a').style.maxHeight = null;
+          other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      q.setAttribute('aria-expanded', String(!isOpen));
+      a.style.maxHeight = !isOpen ? a.scrollHeight + 'px' : null;
+    });
+  });
+
+  /* Reveal on scroll */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('visible'); });
+  }
+})();
+</script>
+
+</body>
+</html>
